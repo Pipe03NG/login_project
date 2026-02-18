@@ -32,3 +32,5 @@ if (isset($_SESION["user"])) {
 } else {
     require_once "view/login.php";
 }
+
+// prueba
