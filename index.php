@@ -6,13 +6,27 @@ session_start();
 $controller = new UsuarioController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])) {
-    if ($_POST["action"] == "login") {
 
+        //accion de resgitro
+    if ($_POST["action"] == "login") {
         $username = $_POST["username"];
         $password = $_POST["password"];
+        
+        //Registrar al Usuario
+        if($controller->registrar($username, $password)){
+            echo "Usuario registrado correctamente." ;
+         } else {
+            echo "Error al resgistrar el usuario";
+         }
 
+        // Intentar iniciar sesion
+        if($_POST["action"] == "login"){
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+        }
+
+        //intentar iniciar sesion
         $user = $controller->login($username, $password);
-
 
         if ($user) {
 
@@ -28,6 +42,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "logoutt") {
     session_destroy();
     header("Location: index.php");
 }
+
 
 if (isset($_SESION["user"])) {
     require_once "view/dashboard.php";

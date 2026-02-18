@@ -8,7 +8,7 @@
 <body>
     
     <h1>Bienvenido al Dashboard</h1>
-    <p>Has iniciado Sesiòn exitosamente</p>
+    <p>Usuario: <?php echo htmlspecialchars($_SESSION["user"]["username"]);?></p>
     <a href="index.php?action=logout">Cerrar Sesiòn</a>
 
 </body>

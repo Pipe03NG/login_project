@@ -29,7 +29,7 @@ class Usuario {
     $stmt = $this->db->prepare($query);
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":password", $hash);
-    return $stmt->execute(); 
+    return $stmt->excute(); 
     }
 }
 ?>
